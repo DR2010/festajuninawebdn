@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DanFestaJuninaCore.Models.Employee>
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div style="float:left;" class="table-responsive">
+        <table class="ui compact celled unstackable active table">
+            <thead class="full-width">
+                <tr>
+                    <th><b>ID</b></th>
+                    <th><b>Name</b></th>
+                    <th><b>Department</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr>
+                        <td>@employee.Id</td>
+                        <td>@employee.Name</td>
+                        <td>@employee.Department</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot class="full-width">
+                <tr>
+                    <th></th>
+                    <th colspan="4">
+                        <button type="submit" formaction="/dishadddisplay" value="Add" class="ui teal button">Add Dish</button>
+                        <button type="submit" formaction="/dishupdatedisplay" value="Update" class="ui teal button">Update</button>
+                        <button type="submit" formaction="/dishdeletemultiple" value="Delete" class="ui teal button">Delete</button>
+
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>

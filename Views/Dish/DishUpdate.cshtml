@@ -1,0 +1,235 @@
+﻿@model DanFestaJuninaCore.ViewModels.DishDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutInside.cshtml";
+}
+
+<div id="header" id="navbar">
+    <a href="/" class="ui red button">Home</a>
+    <a href="/dish/dishlistpictures" class="ui teal button">Menu</a>
+    <a href="/orderlist" class="ui teal button ">Orders</a>
+
+    @if (Model.Info.IsAdmin == "Yes")
+    {
+        <a href="/dish/dishlistdetails" class="ui teal button">Dishes</a>
+        <a href="/activitylist" class="ui teal button ">Activities</a>
+    }
+</div>
+
+<p />
+
+<h1>Update Dish</h1>
+
+<form method="POST" action="dishupdate">
+
+    <div class="ui form">
+        <div class="fields">
+            <div class="field">
+
+                <b>IsAdmin:  @Model.Info.IsAdmin</b>
+
+                <b>Availability</b>
+                <select name="dishactivitytype" id="dishactivitytype" class="ui dropdown">
+
+                    @if (Model.SingleDish.ActivityType == "EveryEvent")
+                    {
+                        <option selected="selected">Every Event</option>
+                    }
+                    else
+                    {
+                        <option value="EveryEvent">Every Event</option>
+                    }
+
+                    @if (Model.SingleDish.ActivityType == "FestaJunina")
+                    {
+                        <option selected="selected">Festa Junina</option>
+                    }
+                    else
+                    {
+                        <option value="FestaJunina">Festa Junina</option>
+                    }
+
+                    @if (Model.SingleDish.ActivityType == "Feijoada")
+                    {
+                        <option selected="selected">Feijoada</option>
+                    }
+                    else
+                    {
+                        <option value="Feijoada">Feijoada</option>
+                    }
+                    @if (Model.SingleDish.ActivityType == "CaldoVerde")
+                    {
+                        <option selected="selected">Caldo Verde</option>
+                    }
+                    else
+                    {
+                        <option value="CaldoVerde">Caldo Verde</option>
+                    }
+                    @if (Model.SingleDish.ActivityType == "Picanha")
+                    {
+                        <option selected="selected">Picanha</option>
+                    }
+                    else
+                    {
+                        <option value="Picanha">Picanha</option>
+                    }
+                    @if (Model.SingleDish.ActivityType == "Not Available")
+                    {
+                        <option selected="selected">Not Available</option>
+                    }
+                    else
+                    {
+                        <option value="Not Available">Not Available</option>
+                    }
+                </select>
+                <br>
+            </div>
+            <div class="field">
+                <b>Type:</b>
+                <p />
+                <select name="dishtype" id="dishtype" class="ui dropdown">
+                    @if (Model.SingleDish.Type == "Sweet")
+                    {
+                        <option selected="selected">Sweet</option>
+                    }
+                    else
+                    {
+                        <option value="Sweet">Sweet</option>
+                    }
+                    @if (Model.SingleDish.Type == "Drink")
+                    {
+                        <option selected="selected">Drink</option>
+                    }
+                    else
+                    {
+                        <option value="Drink">Drink</option>
+                    }
+                    @if (Model.SingleDish.Type == "Savoury")
+                    {
+                        <option selected="selected">Savoury</option>
+                    }
+                    else
+                    {
+                        <option value="Savoury">Savoury</option>
+                    }
+                </select>
+                <br>
+            </div>
+        </div>
+
+        <div class="fields">
+            <div class="field">
+                <p /> <b>Dish Name:</b>
+                <p />
+                <input class="daninputtext" type="text" name="dishname" value="@Model.SingleDish.Name" readonly>
+            </div>
+            <div class="field">
+                <p /> <b>Dish Price:</b>
+                <p />
+                <input type="number" name="dishprice" placeholder="Decimal" ng-model="myDecimal" value="@Model.SingleDish.Price">
+            </div>
+        </div>
+
+        <div class="fields">
+            <div class="field">
+                <p />
+                <br><b>Gluten Free</b>
+                <select name="dishglutenfree" id="dishglutenfree" value="@Model.SingleDish.GlutenFree" class="ui dropdown">
+
+                    @if (Model.SingleDish.GlutenFree == "Yes")
+                    {
+                        <option selected="selected">Yes</option>
+                        <option value="No">No</option>
+                    }
+                    else
+                    {
+                        <option value="Yes">Yes</option>
+                        <option selected="selected">No</option>
+                    }
+                </select>
+                <br>
+            </div>
+            <div class="field">
+                <br><b>Dairy Free</b>
+                <select name="dishdairyfree" id="dishdairyfree" value="@Model.SingleDish.DairyFree" class="ui dropdown">
+                    @if (Model.SingleDish.DairyFree == "Yes")
+                    {
+                        <option selected="selected">Yes</option>
+                        <option value="No">No</option>
+                    }
+                    else
+                    {
+                        <option value="Yes">Yes</option>
+                        <option selected="selected">No</option>
+                    }
+                </select>
+                <br>
+            </div>
+            <div class="field">
+                <br><b>Vegetarian</b>
+                <select name="dishvegetarian" id="dishvegetarian" value="@Model.SingleDish.Vegetarian" class="ui dropdown">
+                    @if (Model.SingleDish.Vegetarian == "Yes")
+                    {
+                        <option selected="selected">Yes</option>
+                        <option value="No">No</option>
+                    }
+                    else
+                    {
+                        <option value="Yes">Yes</option>
+                        <option selected="selected">No</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="fields">
+            <div class="field">
+                <br><b>Initial Quantity</b>
+                <p />
+                <input type="text" id="dishinitialavailable" name="dishinitialavailable" value="@Model.SingleDish.InitialAvailable">
+            </div>
+
+            <div class="field">
+                <br><b>Available Quantity</b>
+                <p />
+                <input type="text" id="dishcurrentavailable" name="dishcurrentavailable" value="@Model.SingleDish.CurrentAvailable">
+            </div>
+        </div>
+        <div class="fields">
+            <div class="field">
+                <p /> <b>Image Name:</b>
+                <p />
+                <input type="text" id="dishimagename" name="dishimagename" value="@Model.SingleDish.ImageName">
+            </div>
+        </div>
+
+        <div class="fields">
+            <div class="field">
+                <p /> <b>Description:</b>
+                <p />
+                <input type="text" id="dishdescription" name="dishdescription" value="@Model.SingleDish.Description">
+
+                <p /> <b>Descricao:</b>
+                <p />
+                <input type="text" id="dishdescricao" name="dishdescricao" value="@Model.SingleDish.Descricao">
+
+                <p /> <b>id:</b>
+                <p />
+                <input type="text" id="dishid" name="dishid" value="@Model.SingleDish.Id">
+
+            </div>
+        </div>
+
+
+        <p />
+        <b>Image:</b>
+        <p />
+        <img src="/images/@Model.SingleDish.ImageName" width="200" name="dishimage" id="dishimage" />
+        <p />
+
+        <p />
+        <input type="submit" formaction="/dish/dishupdate" value="Submit">
+        <p />
+
+    </div>
+</form>

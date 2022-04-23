@@ -1,0 +1,77 @@
+﻿@model DanFestaJuninaCore.ViewModels.DishDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div id="header" id="navbar">
+        <a href="/" class="ui red button">Home</a>
+        <a href="/dish/dishlistpictures" class="ui teal button">Menu</a>
+        <a href="/orderlist" class="ui teal button ">Orders</a>
+
+        @if (Model.Info.IsAdmin == "Yes")
+        {
+            <a href="/dish/dishlistdetails" class="ui teal button">Dishes</a>
+            <a href="/activitylist" class="ui teal button ">Activities</a>
+        }
+    </div>
+
+<p />
+
+<form action="Submit" method="POST" />
+
+<myHero>
+    <h3>@Model.Info.Name</h3>
+</myHero>
+<div style="float:left;" class="table-responsive">
+    <p>
+        <table class="ui compact celled definition table">
+            <!-- <table class="table table-striped table-bordered"> -->
+
+            <thead class="full-width">
+                <tr>
+                    <th><b>Name</b></th>
+                    <th><b>Image</b></th>
+                    <th><b>Description</b></th>
+                    <th><b>Price</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dish in Model.DishVM)
+                {
+
+                    <tr>
+                        <td>@dish.Name</td>
+                        <td><img src="images/@dish.ImageName" width="200"></td>
+                        <td>@dish.Description</td>
+                        <td>@dish.Price</td>
+                    </tr>
+                }
+                </tbody>
+            <tfoot class="full-width">
+                <tr>
+                    <th></th>
+                    <th colspan="4">
+                        <div class="ui right floated small primary labeled icon button">
+                            <i class="user icon"></i> Test But
+                        </div>
+                        <div class="ui small  button">
+                            Approve Test
+                        </div>
+                        <div class="ui small  disabled button">
+                            Approve All Test
+                        </div>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </p>
+</div>
+</form>
+<table></table>
+<div id="footer">
+    <div id="header" id="navbar">
+        <a href="/login" class="ui violet basic button">Login</a>
+        <a href="/logout" class="ui violet basic button">Logout</a>
+    </div>
+</div>

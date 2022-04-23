@@ -1,0 +1,38 @@
+﻿@model DanFestaJuninaCore.ViewModels.HomeDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="header" id="navbar">
+    <a href="/" class="ui red button">Home</a>
+    <a href="/dish/dishlistpictures" class="ui teal button">Menu</a>
+    <a href="/orderlist" class="ui teal button">Orders</a>
+    <a href="/instructions" class="ui teal button">Instructions</a>
+
+    @if  (Model.Info.IsAdmin == "Yes") { 
+        <a href="/dish/dishlistdetails" class="ui teal button">Dishes</a>
+        <a href="/activitylist" class="ui teal button">Activities</a>
+        <a href="/userlist" class="ui teal button">Users</a>
+        <a href="/userrolesshowpage" class="ui teal button">User Roles</a>
+    }
+</div>
+
+<h3>Welcome, @Model.Info.Name.</h3>
+
+<div>
+    <img src="images/festajunina10.jpg" width="300">
+</div>
+
+<h2>Organisation: @Model.Info.Organisation.</h2>
+<h2>Database: @Model.Info.Database.</h2>
+
+<p />
+
+<form action="Submit" method="POST" />
+</form>
+
+<div id="header" id="navbar">
+    <a href="/login" class="ui violet basic button">Login</a>
+    <a href="/logout" class="ui violet basic button">Logout</a>
+</div>
