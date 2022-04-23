@@ -1,0 +1,20 @@
+﻿
+
+Eu tive que alterar o file:
+
+.git/config
+
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/DR2010/festajuninawebdn
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+-------------------
+
+a url agora e' uma url ao inves do  git@github.com:DR2010/festajuninawebdn.git 
